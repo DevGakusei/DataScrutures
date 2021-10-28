@@ -10,35 +10,18 @@ void imprimir(int *v){
 }
 
 void InsertionSort(int *p){
-	int aux1,aux2;
-	int l = sizeof(p);
-	//Going throuht the array from position 1 to its end
-	for(int i=1;i<l;i++){
-		//Comparing position i to its left neightbour,
-		//while i>j, keep going throut the array in the reverse way.
-		//If j-1>i, we finally found the position to insert i and we need
-		//to reorder the other positions of the array.
-		for(int j=i-1;p[i]<p[j];j--){
+	int s = sizeof(p);
+	int aux;
+	for(int i=1;i<s;i++){
+		
+		for(int j=i;j>0 && p[j]<p[j-1];j--){
+			aux = p[j];
+			p[j]=p[j-1];
+			p[j-1]=aux;
 			
-			if(p[i]>p[j-1]){
-				aux1 = p[j];
-				p[j]=p[i];
-				/*
-				Now that we finally inserted p[i] in its right place,
-				we need to reorder the other elements 
-
-				*/
-				for(int g=j+1;g<=i;g++){
-					aux2 = p[g];
-					p[g]=aux1;
-					aux1=aux2;
-				}	
-			}
-	
 		}
-	}	
+	}
 }
-
 
 int main(){
 	//Array in heap memory
